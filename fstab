@@ -1,0 +1,17 @@
+# Place this file in /etc/fstab
+
+LABEL=writable      /               ext4    discard,errors=remount-ro,ro  0  1
+LABEL=system-boot   /boot/firmware  vfat    ro,defaults  0  1
+
+# Place additional drives here for automount, such as:
+# UUID="B8F1-827D"    /media/sda1     exfat   defaults     0  2
+
+# The following paths will reduce writing to the SD card.
+tmpfs  /tmp      tmpfs  defaults,noatime,nosuid,nodev   0  0
+tmpfs  /var/tmp  tmpfs  defaults,noatime,nosuid,nodev   0  0
+tmpfs  /var/log  tmpfs  defaults,noatime,nosuid,nodev,noexec  0  0
+tmpfs  /var/spool/mail  tmpfs  defaults,noatime,nosuid,nodev,noexec,size=25m  0  0
+tmpfs  /var/spool/rsyslog  tmpfs  defaults,noatime,nosuid,nodev,noexec,size=25m  0  0
+tmpfs  /var/lib/logrotate  tmpfs  defaults,noatime,nosuid,nodev,noexec,size=1m,mode=0755  0  0
+tmpfs  /var/lib/sudo  tmpfs  defaults,noatime,nosuid,nodev,noexec,size=1m,mode=0700  0  0
+tmpfs  /media   tmpfs   defaults  0  0
